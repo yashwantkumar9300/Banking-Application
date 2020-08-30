@@ -1,0 +1,348 @@
+
+{% extends 'common.html' %}
+
+{% block yash %}
+    {% load static %}
+    {% include 'admin_menu.html' %}
+    <style>
+        .msg{
+            text-align: center;
+            color: fuchsia;
+        }
+    </style>
+
+     {% if msg %}
+         <br>
+         <h2 class="msg"> {{ msg }}</h2>
+         <h2 class="msg"> Your Account Number is : {{ data }} </h2>
+         <br>
+      {% endif %}
+
+      <form action="{% url 'save_account' %}"method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+     <table align="center" border="0" cellpadding="5" width="50%">
+         <tr>
+             <th colspan="2" style="text-align: center;font-size: 25px;font-family: 'Times New Roman';color: white;background-color: cornflowerblue">
+                 Open Current Account
+             </th>
+         </tr>
+        <tr>
+            <th colspan="2" style="font-size: 20px"> Personal Details </th>
+        </tr>
+        <tr>
+            <th> First Name :<font color="red"> * </font>
+                <input class="form-control" type="text" placeholder="First Name" name="t1" required pattern="[A-Za-z- ]+" title="Alphabets only"> </th>
+            <th> Last Name :<font color="red"> * </font>
+                <input class="form-control" type="text" placeholder="Last Name" name="t2" required pattern="[A-Za-z- ]+" title="Alphabets only"> </th>
+        </tr>
+        <tr>
+            <th> Father's Name :<font color="red">  * </font>
+                <input class="form-control" type="text" placeholder="Father's Name" name="t3" required pattern="[A-Za-z- ]+" title="Alphabets only"> </th>
+            <th> Mother's Name :<font color="red">  * </font>
+                <input class="form-control" type="text" placeholder="Mother's Name" name="t4" required pattern="[A-Za-z- ]+" title="Alphabets only"> </th>
+        </tr>
+        <tr>
+            <th> Date of Birth :<font color="red">  * </font>
+                <input class="form-control" type="date" name="t5" required > </th>
+
+            <th> Gender :<font color="red">  * </font>
+                    <select class="form-control" name="t6" required>
+                        <option> --Select Gender-- </option>
+                        <option> Male </option>
+                        <option> Female </option>
+                        <option> Other's </option>
+                        </select>
+                </th>
+        </tr>
+        <tr>
+            <th> Adhar Number :<font color="red">  * </font>
+                <input class="form-control" type="tel" placeholder="Adhar Number" name="t7" maxlength="12" required > </th>
+
+            <th> Nationality :<font color="red">  * </font>
+                    <select class="form-control" name="t8" required>
+                        <option> --Select Nationality-- </option>
+                        <option> Indian </option>
+                        <option> Other's </option>
+                        </select>
+                </th>
+        </tr>
+        <tr>
+            <th> Mobile Number :<font color="red">  * </font>
+                <input class="form-control" type="tel" placeholder="Mobile Number" name="t9" maxlength="10" required pattern="[6789][0-9]{9}"> </th>
+            <th> Email-Id :<font color="red">  * </font>
+                <input class="form-control" type="email" placeholder="Email-Id" name="t10" required > </th>
+        </tr>
+        <tr>
+            <th> Photo :<font color="red">  * </font>
+                <input class="form-control" type="file" placeholder="Photo" name="t11" required accept="image/*" onchange="loadFile(event)">
+            </th>
+            <th> Signature :<font color="red">  * </font>
+                <input class="form-control" type="file" placeholder="Signature" name="t12" required accept="image/*" onchange="loadF(event)">
+            </th>
+        </tr>
+        <tr>
+            <th style="padding-left: 20px">
+                <img id="output" style="height:100px; width:100px;" />
+            </th>
+            <th style="padding-left: 20px">
+               <img id="f1" style="height:60px; width:170px;" />
+            </th>
+        </tr>
+        <tr>
+            <th colspan="2" style="font-size: 20px"> Residential Address (Current Address) </th>
+        </tr>
+        <tr>
+            <th> House Number :<font color="red">  * </font>
+                <input class="form-control" type="text" placeholder="House Number" id="t13" name="t13" required > </th>
+            <th> Street Name :<font color="red">  * </font>
+                <input class="form-control" type="text" placeholder="Street Name" id="t14" name="t14" required > </th>
+        </tr>
+        <tr>
+            <th> Village :<font color="red">  * </font>
+                <input class="form-control" type="text" placeholder="Village" id="t15" name="t15" required > </th>
+            <th> City :<font color="red">  * </font>
+                <input class="form-control" type="text" placeholder="City" id="t16" name="t16" required > </th>
+        </tr>
+        <tr>
+            <th> Post Office :<font color="red">  * </font>
+                <input class="form-control" type="text" placeholder="Post Office" id="t17" name="t17" required > </th>
+            <th> Pin Code :<font color="red">  * </font>
+                <input class="form-control" type="number" placeholder="Pin Code" id="t18" name="t18" required > </th>
+        </tr>
+        <tr>
+            <th> State :<font color="red">  * </font>
+                    <select class="form-control" id="t19" name="t19">
+                        <option> --Select State-- </option>
+                        <option> Andhra Pradesh </option>
+		                <option> Arunachal Pradesh </option>
+		                <option> Assam </option>
+                        <option> Bihar </option>
+                        <option> Chandigarh </option>
+                        <option> Chhattisgarh </option>
+                        <option> Goa </option>
+                        <option> Gujarat </option>
+                        <option> Haryana </option>
+                        <option> Himachal Pradesh </option>
+                        <option> Jharkhand </option>
+                        <option> Karnataka </option>
+                        <option> Kerala </option>
+                        <option> Madhya Pradesh </option>
+                        <option> Maharashtra </option>
+                        <option> Manipur </option>
+                        <option> Meghalaya </option>
+                        <option> Mizoram </option>
+                        <option> Nagaland </option>
+                        <option> Odisha </option>
+                        <option> Punjab </option>
+                        <option> Rajasthan </option>
+                        <option> Sikkim </option>
+                        <option> Tamil Nadu </option>
+                        <option> Telangana </option>
+                        <option> Tripura </option>
+                        <option> Uttar Pradesh </option>
+                        <option> Uttarakhand </option>
+                        <option> West Bengal </option>
+                        </select>
+                </th>
+                <th> District :<font color="red">  * </font>
+                    <select class="form-control" id="t20" name="t20">
+                        <option> --Select District-- </option>
+                        <option> Balod </option>
+                        <option> Baloda Bazar </option>
+                        <option> Balrampur-Ramanujgang </option>
+                        <option> Bastar </option>
+                        <option> Bemetara </option>
+                        <option> Bijapur </option>
+                        <option> Bilaspur </option>
+                        <option> Dantewada </option>
+                        <option> Dhamtari </option>
+                        <option> Durg </option>
+                        <option> Gariaband </option>
+                        <option> Jashpur </option>
+                        <option> Janjgir-Champa </option>
+                        <option> Kondagaon </option>
+                        <option> Korba </option>
+                        <option> Koriya </option>
+                        <option> Kanker </option>
+                        <option> Kabirdham </option>
+                        <option> Mahasamund </option>
+                        <option> Mungeli </option>
+                        <option> Narayanpur </option>
+                        <option> Raigarh </option>
+                        <option> Rajnandgaon </option>
+                        <option> Raipur </option>
+                        <option> Surajpur </option>
+                        <option> Sukma </option>
+                        <option> Surguja </option>
+                        <option> Gaurela-Pendra-Marwahi </option>
+                    </select>
+        </tr>
+        <tr>
+            <th colspan="2" style="font-size: 20px"> <input type="checkbox" name="same" onclick="fillAddress(this.form)"> Same as Permanent Address </th>
+        </tr>
+
+        <tr>
+            <th> House Number :<font color="red">  * </font>
+                <input class="form-control" type="text" placeholder="House Number" id="t21" name="t21" required > </th>
+            <th> Street Name :<font color="red">  * </font>
+                <input class="form-control" type="text" placeholder="Street Name" id="t22" name="t22" required > </th>
+        </tr>
+        <tr>
+            <th> Village :<font color="red">  * </font>
+                <input class="form-control" type="text" placeholder="Village" id="t23" name="t23" required > </th>
+            <th> City :<font color="red">  * </font>
+                <input class="form-control" type="text" placeholder="City" id="t24" name="t24" required > </th>
+        </tr>
+        <tr>
+            <th> Post Office :<font color="red">  * </font>
+                <input class="form-control" type="text" placeholder="Post Office" id="t25" name="t25" required > </th>
+            <th> Pin Code :<font color="red">  * </font>
+                <input class="form-control" type="text" placeholder="Pin Code" id="t26" name="t26" required > </th>
+        </tr>
+        <tr>
+            <th> State :<font color="red">  * </font>
+                    <select class="form-control" id="t27" name="t27">
+                        <option> --Select State-- </option>
+                        <option> Andhra Pradesh </option>
+		                <option> Arunachal Pradesh </option>
+		                <option> Assam </option>
+                        <option> Bihar </option>
+                        <option> Chandigarh </option>
+                        <option> Chhattisgarh </option>
+                        <option> Goa </option>
+                        <option> Gujarat </option>
+                        <option> Haryana </option>
+                        <option> Himachal Pradesh </option>
+                        <option> Jharkhand </option>
+                        <option> Karnataka </option>
+                        <option> Kerala </option>
+                        <option> Madhya Pradesh </option>
+                        <option> Maharashtra </option>
+                        <option> Manipur </option>
+                        <option> Meghalaya </option>
+                        <option> Mizoram </option>
+                        <option> Nagaland </option>
+                        <option> Odisha </option>
+                        <option> Punjab </option>
+                        <option> Rajasthan </option>
+                        <option> Sikkim </option>
+                        <option> Tamil Nadu </option>
+                        <option> Telangana </option>
+                        <option> Tripura </option>
+                        <option> Uttar Pradesh </option>
+                        <option> Uttarakhand </option>
+                        <option> West Bengal </option>
+                        </select>
+                </th>
+                <th> District :<font color="red">  * </font>
+                    <select class="form-control" id="t28" name="t28">
+                        <option> --Select District-- </option>
+                        <option> Balod </option>
+                        <option> Baloda Bazar </option>
+                        <option> Balrampur-Ramanujgang </option>
+                        <option> Bastar </option>
+                        <option> Bemetara </option>
+                        <option> Bijapur </option>
+                        <option> Bilaspur </option>
+                        <option> Dantewada </option>
+                        <option> Dhamtari </option>
+                        <option> Durg </option>
+                        <option> Gariaband </option>
+                        <option> Jashpur </option>
+                        <option> Janjgir-Champa </option>
+                        <option> Kondagaon </option>
+                        <option> Korba </option>
+                        <option> Koriya </option>
+                        <option> Kanker </option>
+                        <option> Kabirdham </option>
+                        <option> Mahasamund </option>
+                        <option> Mungeli </option>
+                        <option> Narayanpur </option>
+                        <option> Raigarh </option>
+                        <option> Rajnandgaon </option>
+                        <option> Raipur </option>
+                        <option> Surajpur </option>
+                        <option> Sukma </option>
+                        <option> Surguja </option>
+                        <option> Gaurela-Pendra-Marwahi </option>
+                    </select>
+        </tr>
+        <tr>
+            <th colspan="2" style="text-align: center;padding-top: 20px">
+                <button type="submit" class="btn btn-outline-primary"> Save </button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <button type="reset" class="btn btn-outline-danger"> Reset </button>
+            </th>
+        </tr>
+
+        </table>
+      </form>
+
+    <script>
+  var loadFile = function(event)
+   {
+      var output = document.getElementById('output');
+      output.src = URL.createObjectURL(event.target.files[0]);
+      output.onload = function()
+      {
+         URL.revokeObjectURL(output.src) // free memory
+       }
+  };
+
+  var loadF = function(event)
+   {
+      var reader = new FileReader();
+      reader.onload = function(){
+      var f1 = document.getElementById('f1');
+      f1.src = reader.result;
+    };
+    reader.readAsDataURL(event.target.files[0]);
+  };
+
+  function fillAddress(f)
+  {
+      if (f.same.checked == true)
+      {
+          var hno = document.getElementById("t13").value;
+          var sn = document.getElementById("t14").value;
+          var vill = document.getElementById("t15").value;
+          var ct = document.getElementById("t16").value;
+          var po = document.getElementById("t17").value;
+          var pin = document.getElementById("t18").value;
+          var st = document.getElementById("t19").value;
+          var dist = document.getElementById("t20").value;
+
+          var house = hno;
+          var street = sn;
+          var village = vill;
+          var city = ct;
+          var post = po;
+          var pinno = pin;
+          var state = st;
+          var distr = dist
+
+          document.getElementById("t21").value = house;
+          document.getElementById("t22").value = street;
+          document.getElementById("t23").value = village;
+          document.getElementById("t24").value = city;
+          document.getElementById("t25").value = post;
+          document.getElementById("t26").value = pinno;
+          document.getElementById("t27").value = state;
+          document.getElementById("t28").value = distr;
+      }
+       else if (f.same.checked == false)
+        {
+            document.getElementById("t21").value = '';
+            document.getElementById("t22").value = '';
+            document.getElementById("t23").value = '';
+            document.getElementById("t24").value = '';
+            document.getElementById("t25").value = '';
+            document.getElementById("t26").value = '';
+            document.getElementById("t27").value = '';
+            document.getElementById("t28").value = '';
+        }
+  }
+
+
+</script>
+<br>
+{% endblock %}

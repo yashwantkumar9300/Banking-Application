@@ -1,0 +1,63 @@
+
+{% extends 'user_common.html' %}
+    {% block yash %}
+        {% load static %}
+
+        {% if msg %}
+         <br>
+         <h3 style="text-align: center;color: fuchsia"> {{ msg }}</h3>
+          <br>
+      {% endif %}
+
+        <style>
+            .data{
+                text-align: center;
+            }
+        </style>
+
+        <form action="{% url 'withdraw_amt' %}" method="post">
+        {% csrf_token %}
+        <table align="center" border="0" cellpadding="5" width="26%">
+        <tr>
+            <th style="text-align: center;font-size: 25px;font-family: 'Times New Roman';color: white;background-color: cornflowerblue">
+                Select Withdraw Amount
+            </th>
+        </tr>
+        <tr> <th>
+        </th></tr>
+        <tr> <th> </th></tr>
+        <tr>
+            <th class="data">
+                <input type="radio" name="t2" value="500" required> &nbsp; 500 </th>
+        </tr>
+        <tr>
+           <th class="data">
+                <input type="radio" name="t2" value="1000" required> &nbsp; 1000 </th>
+        </tr>
+        <tr>
+           <th class="data">
+                <input type="radio" name="t2" value="2000" required> &nbsp; 2000 </th>
+        </tr>
+        <tr>
+           <th class="data">
+                <input type="radio" name="t2" value="3000" required> &nbsp; 3000 </th>
+        </tr>
+        <tr>
+           <th class="data">
+                <input type="radio" name="t2" value="5000" required> &nbsp; 5000 </th>
+        </tr>
+        <tr>
+           <th class="data">
+                <input type="radio" name="t2" value="10000" required> &nbsp; 10000 </th>
+        </tr>
+        <tr>
+        <th style="text-align: center;padding-top: 20px">
+            <button type="submit" class="btn btn-outline-primary"> Withdraw </button>
+        </th>
+    </tr>
+
+        </table>
+        </form>
+
+
+{% endblock %}

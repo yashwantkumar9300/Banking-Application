@@ -1,0 +1,19 @@
+
+{% extends 'user_common.html' %}
+    {% block yash %}
+    {% load static %}
+
+        {% if message %}
+         <br>
+         <h3 style="text-align: center;color: fuchsia"> {{ message }} {{ udata.balance }}</h3>
+          <br>
+      {% endif %}
+
+      {% if msg %}
+         <br>
+         <h3 style="text-align: center;color: fuchsia"> {{ msg }} </h3>
+          <br>
+      {% endif %}
+
+        <br>
+    {% endblock %}

@@ -1,0 +1,164 @@
+
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/one.css' %}">
+    <style>
+        #title{
+            background-color: mintcream;
+            font-size: 30px;
+            font-family: "Times New Roman";
+            color: blue;
+            text-align: center;
+        }
+         .img_circle{
+            border-radius: 50%;
+        }
+    </style>
+    <title> Welcome Yes Bank </title>
+  </head>
+  <body>
+    <table align="center" border="0" width="100%">
+        <tr>
+            <th width="200"> <img src="{% static 'images/unnamed.png' %}" width="200" height="90"></th>
+            <th id="title"> Welcome To Yes Bank Of India
+                <div id="title2" style="background-color: mintcream; font-size: 20px; text-align: center; color: red; font-family: 'Times New Roman'">
+                    <marquee> Banking Only </marquee></div>
+            </th>
+
+            <th width="200"> <img src="{% static 'images/unnamed.png' %}" width="200" height="90"></th>
+        </tr>
+        <tr>
+            <th class="news" style="background-color: fuchsia; color: white;font-family:'Times New Roman';text-align: center;">
+                <img src="{% static 'images/newgif.gif' %}" width="40" height="30">LATEST NEWS<img src="{% static 'images/newgif.gif' %}" width="40" height="30"></th>
+            <th colspan="2" class="newnews" style="background-color: cornflowerblue; color: white; text-align: center; font-family: 'Times New Roman'">
+                <a href="{% static 'images/Yes Bank of India.pdf' %}" target="_blank">
+                <img src="{% static 'images/new1.gif' %}" width="40" height="30" > <font color="white"> Notification For Submit Adhar  And Pan Old Account </font>
+                 </a>
+            </th>
+        </tr>
+        <tr>
+            <th colspan="3">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href=""></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'user_home' %}" style="font-family: 'Times New Roman';padding-left: 50px;font-size: 20px"> Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                <a class="nav-link" style="font-family: 'Times New Roman';padding-left: 30px;"> <img class="img_circle" src="{{ udata.photo.url }}" width="30" height="30">  <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                <a class="nav-link" style="font-family: 'Times New Roman';font-size: 20px"> Welcome Mr/Miss - {{ udata.fname }} {{ udata.lname }} <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                <a class="nav-link" href="{% url 'main' %}" style="font-family: 'Times New Roman';color: red;font-size: 20px"> Logout <span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
+            </div>
+            </nav>
+            </th>
+        </tr>
+        <tr>
+            <th colspan="3">
+            <br>
+               <table align="center" width="100%">
+                   <tr>
+                       <th width="260">
+                           <table cellpadding="5">
+                               <tr>
+                                   <th>
+                                        <form action="{% url 'fast_cash' %}">
+                                       <button type="submit" class="btn btn-primary btn-lg btn-block"> Fast Cash </button>
+                                        </form>
+                                   </th>
+                               </tr>
+                               <tr>
+                                   <th>
+                                       <form action="{% url 'services' %}">
+                                       <button type="submit" class="btn btn-primary btn-lg btn-block"> Services </button>
+                                       </form>
+                                   </th>
+                               </tr>
+                               <tr>
+                                   <th>
+                                        <form action="{% url 'change_pin_form' %}">
+                                       <button type="submit" class="btn btn-primary btn-lg btn-block"> Change Password </button>
+                                        </form>
+                                   </th>
+                               </tr>
+                               <tr>
+                                   <th>
+                                        <form action="{% url 'mini_statement' %}">
+                                       <button type="submit" class="btn btn-primary btn-lg btn-block"> Mini Statement </button>
+                                        </form>
+                                   </th>
+                               </tr>
+                           </table>
+                       </th>
+                       <th width="74%">
+                           {% block yash %}
+
+
+                            {% endblock %}
+                       </th>
+                       <th width="200">
+                          <table cellpadding="5">
+                               <tr>
+                                   <th>
+                                       <form action="{% url 'deposit_form' %}">
+                                       <button type="submit" class="btn btn-primary btn-lg btn-block"> Deposit </button>
+                                       </form>
+                                   </th>
+                               </tr>
+                               <tr>
+                                   <th>
+                                        <form action="{% url 'withdraw_form' %}">
+                                       <button type="submit" class="btn btn-primary btn-lg btn-block"> Withdraw </button>
+                                        </form>
+                                   </th>
+                               </tr>
+                               <tr>
+                                   <th>
+                                        <form action="{% url 'transfer_form' %}">
+                                       <button type="submit" class="btn btn-primary btn-lg btn-block"> Transfer </button>
+                                        </form>
+                                   </th>
+                               </tr>
+                               <tr>
+                                   <th>
+                                        <form action="{% url 'balance_check' %}">
+                                        <button type="submit" class="btn btn-primary btn-lg btn-block"> Balance Check  </button>
+                                        </form>
+                                   </th>
+                               </tr>
+                           </table>
+            </th>
+        </tr>
+               </table>
+         <br><br><br><br><br><br><br><br><br><br><br><br>
+        <tr>
+            <th colspan="3" class="coptright" style="background-color: cornflowerblue; color: white; text-align: center;font-family: 'Times New Roman'">
+                Copyright &copy 2019-2020 YES BANK All Rights Reserved
+            </th>
+        </tr>
+    </table>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+  </body>
+</html>

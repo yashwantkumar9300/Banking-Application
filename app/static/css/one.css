@@ -1,0 +1,37 @@
+
+#title{
+    background-color: mintcream;
+    font-size: 30px;
+    font-family: "Times New Roman";
+    color: blue;
+    text-align: center;
+}
+
+#title2{
+    background-color: mintcream;
+    font-size: 20px;
+    font-family: "Times New Roman";
+    color: red;
+    text-align: center;
+}
+
+.coptright{
+    background-color: cornflowerblue;
+    color: white;
+    text-align: center;
+    font-family: "Times New Roman";
+}
+
+.news{
+    background-color: fuchsia;
+    color: white;
+    font-family: "Times New Roman";
+    text-align: center;
+}
+
+.newnews{
+    background-color: cornflowerblue;
+    color: white;
+    font-family: "Times New Roman";
+    text-align: center;
+}

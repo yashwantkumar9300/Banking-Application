@@ -1,0 +1,44 @@
+
+{% extends 'user_common.html' %}
+    {% block yash %}
+        <style>
+            .header{
+                font-size: 20px;
+                color: #ff00ff;
+                background-color: #d6edf8;
+                text-align: center;
+            }
+            .data{
+                color: darkslateblue;
+            }
+        </style>
+
+        <table align="center" border="2" cellpadding="5">
+        <tr>
+            <th colspan="10" style="text-align: center;font-size: 25px;background-color: cornflowerblue;color: white">
+                Mini Statement
+            </th>
+        </tr>
+        <tr>
+            <th class="header"> Date </th>
+            <th class="header"> Reference No </th>
+            <th class="header"> Particular </th>
+            <th class="header"> Debit </th>
+            <th class="header"> Credit </th>
+            <th class="header"> Avl Balance </th>
+        </tr>
+        {% for x in data %}
+        <tr>
+            <th class="data"> {{ x.date }}</th>
+            <th class="data"> {{ x.reference }}</th>
+            <th class="data"> {{ x.particular }}</th>
+            <th class="data"> {{ x.debit }}</th>
+            <th class="data"> {{ x.credit }}</th>
+            <th class="data"> {{ x.balance }}</th>
+        </tr>
+
+    {% endfor %}
+
+    </table>
+
+{% endblock %}

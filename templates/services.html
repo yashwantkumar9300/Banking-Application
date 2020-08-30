@@ -1,0 +1,49 @@
+
+{% extends 'user_common.html' %}
+    {% block yash %}
+    {% load static %}
+         <table align="center" cellpadding="5">
+                        <tr>
+                            <th style="text-align: center; font-size: 25px; font-family: 'Times New Roman'; background-color: cornflowerblue; color: white"> Services </th>
+                            </tr>
+                                <tr> <th> </th></tr>
+                               <tr>
+                                   <th>
+                                        <form action="" method="post">
+                                        {% csrf_token %}
+                                        <input type="hidden" value="{{ udata.acno }}" name="t1">
+                                       <button type="submit" class="btn btn-secondary btn-lg btn-block"> Pin Generate </button>
+                                        </form>
+                                   </th>
+                               </tr>
+                               <tr>
+                                   <th>
+                                       <form action="" method="post">
+                                        {% csrf_token %}
+                                        <input type="hidden" value="{{ udata.acno }}" name="t1">
+                                       <button type="submit" class="btn btn-secondary btn-lg btn-block"> Mobile Recharge </button>
+                                       </form>
+                                   </th>
+                               </tr>
+                               <tr>
+                                   <th>
+                                        <form action="" method="post">
+                                        {% csrf_token %}
+                                        <input type="hidden" value="{{ udata.acno }}" name="t1">
+                                       <button type="submit" class="btn btn-secondary btn-lg btn-block"> Mobile Registrations </button>
+                                        </form>
+                                   </th>
+                               </tr>
+                               <tr>
+                                   <th>
+                                        <form action="" method="post">
+                                        {% csrf_token %}
+                                        <input type="hidden" value="{{ udata.acno }}" name="t1">
+                                       <button type="submit" class="btn btn-secondary btn-lg btn-block"> Adhar Registrations </button>
+                                        </form>
+                                   </th>
+                               </tr>
+                           </table>
+
+        <br>
+    {% endblock %}

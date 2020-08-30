@@ -1,0 +1,108 @@
+
+    {% extends 'common.html' %}
+    {% block yash %}
+        {% load static %}
+        {% include 'main_menu.html' %}
+
+        <style>
+            .msg{
+                text-align: center;
+                color: fuchsia;
+            }
+        </style>
+
+        {% if blocked %}
+            <h4 class="msg"> <br> {{ blocked }}</h4>
+            <h4 class="msg"> Please Contact Your Home Branch </h4> <br>
+        {% endif %}
+
+        {% if msg %}
+            <h3 class="msg"> <br> {{ msg }}</h3> <br>
+        {% endif %}
+
+        {% if closed %}
+            <h3 class="msg"> <br> {{ closed }}</h3> <br>
+        {% endif %}
+
+     <form action="{% url 'user_check' %}" method="post">
+     {% csrf_token %}
+    <table align="center" border="0" width="350" cellpadding="7">
+     <tr>
+         <th style="text-align: center; font-size: 20px; font-family: 'Times New Roman'; background-color: cornflowerblue; color: white"> User Login - Raipur </th>
+     </tr>
+        <tr> <th> </th></tr>
+    <tr>
+        <th>
+            <div class="input-group flex-nowrap">
+            <div class="input-group-prepend">
+            <span class="input-group-text" id="addon-wrapping"><img src="{% static 'images/user.png' %}" width="20" height="20"></span>
+            </div>
+            <input class="form-control" type="number" placeholder="Account Number" name="t1" required aria-label="Username" aria-describedby="addon-wrapping" >
+            </div>
+        </th>
+    </tr>
+    <tr>
+        <th>
+            <div class="input-group flex-nowrap">
+            <div class="input-group-prepend">
+            <span class="input-group-text" id="addon-wrapping"><img src="{% static 'images/lock.png' %}" width="20" height="20"></span>
+            </div>
+            <input class="form-control" type="password" placeholder="Password" name="t2" required aria-label="Username" aria-describedby="addon-wrapping" >
+            </div>
+        </th>
+    </tr>
+    <tr>
+        <th style="text-align: right;color: red;font-family: 'Times New Roman';padding-right: 10px">
+            <a href="{% url 'forgot_pass_form' %}"> <font color="red"> Forgot Password </font>  </a>
+        </th>
+    </tr>
+    <tr>
+        <th>
+            <input class="form-control" type="text" placeholder="Please enter Security code shown below" name="t3"  required >
+        </th>
+    </tr>
+    <tr>
+        <th style="font-family: 'Times New Roman'; font-size: 20px; color: red">
+            Security Code : <img src="{% static 'cimg/captcha.png' %}">
+            <a href="{% url 'user_refresh' %}">
+            <img src="{% static 'images/refresh.png' %}" width="25" height="25"> </a>
+        </th>
+    </tr>
+    <tr>
+        <th style="text-align: center; padding: 10px">
+            <button type="submit" class="btn btn-outline-success"> Login </button> &nbsp;&nbsp;&nbsp;
+            <button type="reset" class="btn btn-outline-warning"> Reset </button>
+        </th>
+    </tr>
+
+    {% if error %}
+    <tr>
+    <th style="text-align: center">
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong> {{ error }}</strong> <br> {{ data }} Attempt Remaining of 3 Then Block Your Account
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+    </th>
+    </tr>
+     {% endif %}
+
+    {% if error1 %}
+    <tr>
+    <th style="text-align: center">
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong> {{ error1 }}</strong> <br>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+    </th>
+    </tr>
+     {% endif %}
+
+    </table>
+    </form>
+
+        <br><br><br><br><br><br>
+    {% endblock %}

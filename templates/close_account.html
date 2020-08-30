@@ -1,0 +1,40 @@
+
+{% extends 'common.html' %}
+
+{% block yash %}
+    {% load static %}
+    {% include 'admin_menu.html' %}
+
+    {% if msg %}
+         <br>
+         <h3 style="text-align: center;color: fuchsia"> {{ msg }}</h3>
+      {% endif %}
+     {% if error %}
+         <br>
+         <h3 style="text-align: center;color: fuchsia"> {{ error }}</h3>
+      {% endif %}
+
+    <br>
+    <form action="{% url 'clos_acc' %}" method="post">
+    {% csrf_token %}
+    <table align="center" border="0" cellpadding="5" width="25%">
+    <tr>
+        <th style="text-align: center;font-size: 25px;background-color: cornflowerblue;color: white"> Close Account </th>
+    </tr>
+    <tr> <th> </th> </tr>
+    <tr>
+        <th>
+            <input class="form-control" type="number" placeholder="Account Number" name="t1" required>
+        </th>
+    </tr>
+    <tr>
+        <th style="text-align: center;padding-top: 20px">
+            <button type="submit" class="btn btn-outline-primary"> Submit </button>
+        </th>
+    </tr>
+
+    </table>
+    </form>
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+{% endblock %}

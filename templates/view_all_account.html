@@ -1,0 +1,57 @@
+
+{% extends 'common.html' %}
+
+{% block yash %}
+    {% load static %}
+    {% include 'admin_menu.html' %}
+    <style>
+        .data{
+            text-align: center;
+            color: darkslateblue;
+        }
+        .header{
+            text-align: center;
+            font-size: 20px;
+            color: #ff00ff;
+            background-color: #d6edf8;
+        }
+    </style>
+    <br>
+    <table align="center" border="2" cellpadding="5">
+    <tr>
+        <th colspan="10" style="text-align: center;font-size: 25px;background-color: cornflowerblue;color: white">
+            All Account
+        </th>
+    </tr>
+    <tr>
+        <th class="header"> Account No </th>
+        <th class="header"> First Name </th>
+        <th class="header"> Last Name </th>
+        <th class="header"> Father's Name </th>
+        <th class="header"> Date Of Birth </th>
+        <th class="header"> Gender </th>
+        <th class="header"> Contact No </th>
+        <th class="header"> Email-Id </th>
+        <th class="header"> Status </th>
+        <th class="header"> Photo </th>
+    </tr>
+    {% for x in data %}
+        <tr>
+        <th class="data"> {{ x.acno }}</th>
+        <th class="data"> {{ x.fname }}</th>
+        <th class="data"> {{ x.lname }}</th>
+        <th class="data"> {{ x.ftname }}</th>
+        <th class="data"> {{ x.dob }}</th>
+        <th class="data"> {{ x.gender }}</th>
+        <th class="data"> {{ x.mobile }}</th>
+        <th class="data"> {{ x.email }}</th>
+        <th class="data"> {{ x.status }}</th>
+        <th> <img src="{{ x.photo.url }}" width="60" height="60"></th>
+        </tr>
+
+    {% endfor %}
+
+    </table>
+
+<br><br>
+{% endblock %}
